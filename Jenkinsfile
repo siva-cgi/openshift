@@ -168,7 +168,7 @@ podTemplate(
               dc.spec.template.spec.containers[0].image="docker-registry.default.svc:5000/${devProject}/tasks:${prodTag}"
               openshift.apply(dc)
               
-              
+              openshift.set("env", "dc/${destApp}", "VERSION='${prodTag} (${destApp})'", "--overwrite") 
 
 
               // Update Config Map in change config files changed in the source
